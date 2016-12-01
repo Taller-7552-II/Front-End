@@ -53,7 +53,7 @@ services.factory('TrabajosService', ['$http', '$q', function($http, $q){
 			$.ajax({
 			    url: url+'job_positions/categories/'+category+'/'+name,
 			    type: 'POST',    
-			    data: ' {\"job_position\": {\"name\":\"developer\",\"description\":\" a s22oftwakre developer\",\"category\":\"software\"}}',
+			    data: {"name":"developer","description":" a s22oftwakre developer","category":"software"},
 			    dataType: 'json',
 			    contentType : 'application/json',
 			    success: function(result) {
