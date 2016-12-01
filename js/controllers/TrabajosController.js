@@ -10,6 +10,12 @@ app.controller(
 						function($scope, $rootScope, TrabajosService) {
 
 							$scope.trabajos = [];
+							$scope.dirty = 	{
+									name : '',
+									description : '',
+									category : ''
+							};
+
 
 							$scope.fetchAllTrabajos = function() {
 								TrabajosService
@@ -47,11 +53,25 @@ app.controller(
 							$scope.reload = function() {
 								
 							};
-							$scope.putServis = function() {
-								var category = $scope.queryResultados;
-								var jasonStatham ={"name": "hola","description":"chau"};
+							
+							$scope.writeDirty = function(nombre,descripcion,categoria) {
+								$scope.dirty.name = nombre;
+								$scope.dirty.description = descripcion;
+								$scope.dirty.category = categoria;
+							};
+							
+							$scope.putServis = function(nombre,descripcion,categoria) {
+								var dataObject = {
+										name : nombre,
+										description : descripcion,
+										category : categoria
+								};			
+
+																
 								TrabajosService
-											.updateJobPosition(category,jasonStatham);
+											.updateJobPosition($scope.dirty.name,$scope.dirty.category,dataObject);
+								
+								$scope.fetchAllTrabajos();
 							};
 
 

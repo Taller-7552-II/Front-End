@@ -45,14 +45,18 @@ services.factory('TrabajosService', ['$http', '$q', function($http, $q){
 				);
 		},
 
-		updateJobPosition: function(developer,data){
-			return $http.put(url+'job_positions/categories/development/'+developer, data)
+		updateJobPosition: function(name,category,dataObject){			
+			var data =JSON.stringify(dataObject);
+			
+			data = '{"job_position": '+data+'}';
+			
+			return $http.put(url+'job_positions/categories/'+category+'/'+name, data)
 				.then(
 					function(response){
 						return response.data;
 					},
 					function(errResponse){
-						console.error('Error al actualizar job position de developer ' + developer);
+						console.error('Error al actualizar job position');
 						return $q.reject(errResponse);
 					}
 				);
@@ -81,8 +85,8 @@ services.factory('LoginService', ['$http', '$q', function($http, $q){
 
 		authenticate: function(username,password) {
 			if ( username == 'admin' && password == 'admin') {
-				$http.defaults.headers.common['Access-Control-Request-Method'] = '*';
-				$http.defaults.headers.common['Access-Control-Request-Headers'] = '*';
+//				$http.defaults.headers.common['Access-Control-Request-Method'] = '*';
+//				$http.defaults.headers.common['Access-Control-Request-Headers'] = '*';
 				return 'OK';
 			} else {
 				console.error('Error al querer autenticar con user '+ username + ' y password '+password );

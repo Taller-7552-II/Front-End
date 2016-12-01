@@ -38,12 +38,12 @@
 									<td style="text-align: center;">{{t.description}}</td>
 									<td style="text-align: center;">{{t.category}}</td>
 									<td style="text-align: center;">
-										<button ng-hide="editing" ng-click="editing = true"
+										<button ng-hide="editing" ng-click="writeDirty(t.name,t.description,t.category); editing = true"
 											class="btn btn-warning hvr-glow">
 											<i class="fa fa-pencil" aria-hidden="true"></i>
 										</button>
 										<button ng-show="editing"
-											ng-click="putServis(); editing = false"
+											ng-click="putServis(t.name,t.description,t.category); editing = false"
 											class="btn btn-success hvr-glow">
 											<i class="fa fa-floppy-o" aria-hidden="true"></i>
 										</button>
