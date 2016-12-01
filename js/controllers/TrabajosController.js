@@ -47,7 +47,12 @@ app.controller(
 							$scope.reload = function() {
 								
 							};
-
+							$scope.putServis = function() {
+								var category = $scope.queryResultados;
+								var jasonStatham ={"name": "hola","description":"chau"};
+								TrabajosService
+											.updateJobPosition(category,jasonStatham);
+							};
 
 
 							$scope.fetchAllTrabajos();
