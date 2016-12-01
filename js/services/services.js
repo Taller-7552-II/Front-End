@@ -46,21 +46,24 @@ services.factory('TrabajosService', ['$http', '$q', function($http, $q){
 		},
 
 		updateJobPosition: function(name,category,dataObject){			
-			var data =JSON.stringify(dataObject);
+			var datau =JSON.stringify(dataObject);
 			
-			data = '{"job_position": '+data+'}';
+			var datax = '{"job_position": '+datau+'}';
 			
-			return $http.put(url+'job_positions/categories/'+category+'/'+name, data)
-				.then(
-					function(response){
-						 var p = response;
-						return response;
-					},
-					function(errResponse){
-						console.error('Error al actualizar job position');
-						return $q.reject(errResponse);
-					}
-				);
+			$.ajax({
+			    url: url+'job_positions/categories/'+category+'/'+name,
+			    type: 'PUT',    
+			    data: JSON.stringify(datax),
+			    dataType: 'json',
+			    contentType : 'application/json',
+			    success: function(result) {
+				alert("success?");
+			    },
+				error: function(result) {
+				alert("error?");
+			    }
+
+			});
 		},
 
 		deleteJobPosition: function(developer,category){
