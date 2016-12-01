@@ -53,7 +53,8 @@ services.factory('TrabajosService', ['$http', '$q', function($http, $q){
 			return $http.put(url+'job_positions/categories/'+category+'/'+name, data)
 				.then(
 					function(response){
-						return response.data;
+						 var p = response;
+						return response;
 					},
 					function(errResponse){
 						console.error('Error al actualizar job position');
