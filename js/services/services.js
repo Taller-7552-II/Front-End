@@ -52,7 +52,7 @@ services.factory('TrabajosService', ['$http', '$q', function($http, $q){
 			
 			$.ajax({
 			    url: url+'job_positions/categories/'+category+'/'+name,
-			    type: 'PUT',    
+			    type: 'POST',    
 			    data: JSON.stringify(datax),
 			    dataType: 'json',
 			    contentType : 'application/json',
