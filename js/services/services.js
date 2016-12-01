@@ -91,6 +91,10 @@ services.factory('LoginService', ['$http', '$q', function($http, $q){
 			if ( username == 'admin' && password == 'admin') {
 //				$http.defaults.headers.common['Access-Control-Request-Method'] = '*';
 //				$http.defaults.headers.common['Access-Control-Request-Headers'] = '*';
+				$http.defaults.headers.common = {};
+				$http.defaults.headers.post = {};
+				$http.defaults.headers.put = {};
+				$http.defaults.headers.patch = {};
 				return 'OK';
 			} else {
 				console.error('Error al querer autenticar con user '+ username + ' y password '+password );
